@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Wrench, Zap, ShieldCheck, Car, X } from 'lucide-react';
 import { Service } from '../types';
+import { motion } from 'framer-motion';
 
 const services: Service[] = [
   {
@@ -62,11 +63,15 @@ const Services: React.FC = () => {
         </div>
 
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services.map((service) => (
-            <div 
+          {services.map((service, i) => (
+            <motion.div 
               key={service.id} 
               onClick={() => setSelectedService(service)}
-              className="group relative bg-race-carbon border border-gray-800 hover:border-race-red transition-all duration-300 overflow-hidden cursor-pointer hover:scale-[1.02] transform hover:shadow-[0_0_20px_rgba(230,0,0,0.15)] rounded-lg"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.15 }}
+              className="group relative bg-race-carbon border border-gray-800 hover:border-race-red transition-all duration-300 overflow-hidden cursor-pointer hover:scale-[1.02] transform hover:shadow-[0_0_20px_rgba(220,38,38,0.4)] rounded-lg"
             >
               <div className="h-48 overflow-hidden relative">
                 <img 
@@ -92,7 +97,7 @@ const Services: React.FC = () => {
                   Learn More <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
@@ -200,25 +205,25 @@ const Services: React.FC = () => {
               </h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
                 <div className="relative group overflow-hidden rounded-lg border border-gray-800 aspect-video bg-black/40">
-                  <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=600&auto=format&fit=crop" alt="Finished build 1" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?q=80&w=600&auto=format&fit=crop" alt="Finished build 1" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex items-end p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span className="text-[10px] text-white font-bold font-mono">2020 Toyota Supra</span>
                   </div>
                 </div>
                 <div className="relative group overflow-hidden rounded-lg border border-gray-800 aspect-video bg-black/40">
-                  <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=600&auto=format&fit=crop" alt="Finished build 2" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  <img src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=600&auto=format&fit=crop" alt="Finished build 2" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex items-end p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span className="text-[10px] text-white font-bold font-mono">2018 Nissan GT-R</span>
                   </div>
                 </div>
                 <div className="relative group overflow-hidden rounded-lg border border-gray-800 aspect-video bg-black/40">
-                  <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600&auto=format&fit=crop" alt="Finished build 3" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600&auto=format&fit=crop" alt="Finished build 3" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex items-end p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span className="text-[10px] text-white font-bold font-mono">Porsche 911 GT3</span>
                   </div>
                 </div>
                 <div className="relative group overflow-hidden rounded-lg border border-gray-800 aspect-video bg-black/40">
-                  <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600&auto=format&fit=crop" alt="Finished build 4" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                  <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?q=80&w=600&auto=format&fit=crop" alt="Finished build 4" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex items-end p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <span className="text-[10px] text-white font-bold font-mono">Corvette Z06</span>
                   </div>

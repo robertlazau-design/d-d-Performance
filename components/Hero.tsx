@@ -17,52 +17,38 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="relative h-full flex items-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex items-center gap-2 mb-4"
-          >
+        <motion.div 
+          className="max-w-3xl"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="flex items-center gap-2 mb-4">
             <div className="flex text-race-red">
               {[...Array(5)].map((_, i) => (
                 <Star key={i} className="w-5 h-5 fill-current" />
               ))}
             </div>
             <span className="text-gray-300 font-bold uppercase tracking-wider text-sm">Top Rated Local Shop</span>
-          </motion.div>
+          </div>
 
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-display font-black text-white uppercase italic leading-none mb-6"
-          >
+          <h1 className="text-5xl md:text-7xl font-display font-black text-white uppercase italic leading-none mb-6">
             More Power.<br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-race-red to-orange-600">
               Less Compromise.
             </span>
-          </motion.h1>
+          </h1>
 
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-300 mb-10 font-light max-w-2xl border-l-4 border-race-red pl-6"
-          >
+          <p className="text-xl md:text-2xl text-gray-300 mb-10 font-light max-w-2xl border-l-4 border-race-red pl-6">
             Welcome to D&D Performance Automotive. We don't just fix cars; we engineer excitement. 
             Trusted by enthusiasts, proven on the dyno.
-          </motion.p>
+          </p>
 
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4"
-          >
+          <div className="flex flex-col sm:flex-row gap-4">
             <a 
               href="#contact"
-              className="group relative px-8 py-4 bg-race-red text-white font-bold uppercase tracking-widest overflow-hidden skew-x-[-12deg] hover:bg-red-700 transition-colors inline-block text-center"
+              className="group relative px-8 py-4 bg-race-red text-white font-bold uppercase tracking-widest overflow-hidden skew-x-[-12deg] hover:bg-red-700 transition-all duration-300 hover:shadow-[0_0_20px_rgba(220,38,38,0.4)] inline-block text-center"
             >
               <div className="skew-x-[12deg] flex items-center justify-center gap-2">
                 Book Appointment <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -71,14 +57,14 @@ const Hero: React.FC = () => {
             
             <a 
               href="#services"
-              className="group relative px-8 py-4 border border-white text-white font-bold uppercase tracking-widest overflow-hidden skew-x-[-12deg] hover:bg-white hover:text-black transition-all inline-block text-center"
+              className="group relative px-8 py-4 border border-white text-white font-bold uppercase tracking-widest overflow-hidden skew-x-[-12deg] hover:bg-white hover:text-black transition-all duration-300 hover:shadow-[0_0_20px_rgba(220,38,38,0.4)] inline-block text-center"
             >
                <div className="skew-x-[12deg]">
                 Explore Services
               </div>
             </a>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </div>
 
       {/* Decorative Bottom Gradient */}

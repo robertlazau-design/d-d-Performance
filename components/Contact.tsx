@@ -123,7 +123,7 @@ const Contact: React.FC = () => {
 
               <button 
                 type="button"
-                className="w-full bg-race-red text-white font-bold uppercase tracking-widest py-4 hover:bg-red-700 transition-colors skew-x-[-12deg]"
+                className="w-full bg-race-red text-white font-bold uppercase tracking-widest py-4 hover:bg-red-700 transition-all duration-300 hover:shadow-[0_0_20px_rgba(220,38,38,0.4)] skew-x-[-12deg]"
               >
                 <span className="skew-x-[12deg] block">Send Message</span>
               </button>
