@@ -24,7 +24,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-white font-bold uppercase mb-1">Address</h4>
-                  <p className="text-gray-400">123 Performance Blvd<br />Motor City, MC 48201</p>
+                  <p className="text-gray-400">12689 NE Whitaker Way<br />Portland, OR 97230</p>
                 </div>
               </div>
 
@@ -34,8 +34,8 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="text-white font-bold uppercase mb-1">Phone</h4>
-                  <a href="tel:5551234567" className="text-gray-400 hover:text-race-red transition-colors">
-                    (555) 123-4567
+                  <a href="tel:5035091164" className="text-gray-400 hover:text-race-red transition-colors">
+                    (503) 509-1164
                   </a>
                 </div>
               </div>
