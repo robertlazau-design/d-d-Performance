@@ -1,5 +1,5 @@
 import React from 'react';
-import { Gauge, Facebook } from 'lucide-react';
+import { Gauge, Facebook, Instagram } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -25,6 +25,14 @@ const Footer: React.FC = () => {
             className="text-gray-400 hover:text-race-red transition-colors"
           >
             <Facebook className="w-6 h-6" />
+          </a>
+          <a 
+            href="https://www.instagram.com/dnd.performance.automotive.llc" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-gray-400 hover:text-race-red transition-colors"
+          >
+            <Instagram className="w-6 h-6" />
           </a>
         </div>
 
