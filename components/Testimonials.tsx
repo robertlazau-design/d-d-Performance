@@ -1,48 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Review } from '../types';
+import { Star, Quote, ChevronLeft, ChevronRight, StarHalf } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const reviews: Review[] = [
+interface ReviewData {
+  id: number;
+  name: string;
+  quote: string;
+  vehicle?: string;
+  timeAgo: string;
+  rating: number;
+}
+
+const reviewData: ReviewData[] = [
   {
     id: 1,
-    name: "Michael R.",
-    rating: 5,
-    text: "Took my Corvette here for a dyno tune. The difference is night and day. These guys know their stuff and treated my car like it was their own.",
-    car: "2019 Corvette Z06",
-    date: "2 months ago"
+    name: "Becca Lanthorn",
+    quote: "Impressive and clean job done by Donnell. I needed a labor intensive repair done on my 1998 Tacoma and he pulled through truly.Shes up and running smooth! Honest and hard work with fair and true quotes. Definitely would & will be going back for repairs and maintenance. Thank you again!",
+    vehicle: "1998 Tacoma",
+    timeAgo: "a week ago",
+    rating: 5
   },
   {
     id: 2,
-    name: "Sarah Jenkins",
-    rating: 5,
-    text: "Honest mechanics are hard to find. D&D not only fixed my issue for less than the dealer quoted, but they also explained everything clearly. Highly recommended!",
-    car: "2018 Honda Civic Type R",
-    date: "1 month ago"
+    name: "Payton Frei",
+    quote: "Thank you Donnell!!! Super fast and communicative, I really appreciated him being able to help me out with replacing my solenoid. Definitely going to reccomend D&D to others.",
+    vehicle: "Solenoid Replacement",
+    timeAgo: "2 months ago",
+    rating: 5
   },
   {
     id: 3,
-    name: "David K.",
-    rating: 5,
-    text: "Absolute legends. Did a full engine swap on my project car. The attention to detail is unmatched in this area. They even fixed some wiring issues the previous shop messed up.",
-    car: "1995 Nissan 240SX",
-    date: "3 weeks ago"
-  },
-  {
-    id: 4,
-    name: "James T.",
-    rating: 5,
-    text: "Brought my WRX in for a clutch job. Done fast, done right. The new clutch feel is amazing. They even detailed the engine bay.",
-    car: "2020 Subaru WRX STI",
-    date: "1 week ago"
-  },
-  {
-    id: 5,
-    name: "Mark D.",
-    rating: 5,
-    text: "Best shop in town for LS swaps. These guys are wizards. My truck runs better than factory now and makes twice the power.",
-    car: "1985 Chevy C10",
-    date: "4 days ago"
+    name: "Nicholas Prante",
+    quote: "It is a good feeling to trust your mechanic completely. A priceless feeling, really. As long as Donnell is fixing cars, I'm not worried about my automotive repair needs. He is very talented & thorough. His price is as fair as you can find. He has worked on half a dozen of cars for me and I've always left with a confident feeling, that I'm in good hands. Thanks Donnell, my OBXT is running great– see you later!",
+    vehicle: "Subaru Outback XT (OBXT)",
+    timeAgo: "6 months ago",
+    rating: 5
   }
 ];
 
@@ -84,13 +76,13 @@ const Testimonials: React.FC = () => {
     setDirection(newDirection);
     setIndex((prevIndex) => {
       let nextIndex = prevIndex + newDirection;
-      if (nextIndex < 0) nextIndex = reviews.length - 1;
-      if (nextIndex >= reviews.length) nextIndex = 0;
+      if (nextIndex < 0) nextIndex = reviewData.length - 1;
+      if (nextIndex >= reviewData.length) nextIndex = 0;
       return nextIndex;
     });
   };
 
-  const currentReview = reviews[index];
+  const currentReview = reviewData[index];
 
   return (
     <div id="reviews" className="py-32 bg-black relative overflow-hidden flex flex-col items-center justify-center min-h-[800px]">
@@ -106,13 +98,14 @@ const Testimonials: React.FC = () => {
               The <span className="text-transparent bg-clip-text bg-gradient-to-r from-race-red to-orange-600">Verdict</span>
             </h2>
             <div className="flex items-center justify-center gap-4 bg-race-carbon/80 backdrop-blur border border-race-red/30 px-6 py-2 rounded-full inline-flex">
-              <span className="text-3xl font-bold text-white">5.0</span>
+              <span className="text-3xl font-bold text-white">4.8</span>
               <div className="flex text-race-red">
-                {[...Array(5)].map((_, i) => (
+                {[...Array(4)].map((_, i) => (
                   <Star key={i} className="w-5 h-5 fill-current" />
                 ))}
+                <StarHalf className="w-5 h-5 fill-current" />
               </div>
-              <span className="text-gray-400 text-sm border-l border-gray-700 pl-4 uppercase tracking-widest">Google Verified</span>
+              <span className="text-gray-400 text-sm border-l border-gray-700 pl-4 uppercase tracking-widest">26 Google Reviews</span>
             </div>
         </div>
 
@@ -162,16 +155,18 @@ const Testimonials: React.FC = () => {
                             </div>
                             
                             <p className="text-xl md:text-3xl font-display font-medium text-white mb-8 leading-tight italic">
-                                "{currentReview.text}"
+                                "{currentReview.quote}"
                             </p>
                             
                             <div className="border-t border-gray-800 pt-6 flex flex-col items-center">
                                 <h4 className="text-xl font-bold text-white uppercase tracking-wider">{currentReview.name}</h4>
                                 <div className="flex items-center gap-2 mt-2">
-                                    <span className="px-3 py-1 bg-black rounded text-xs text-race-red font-mono border border-race-red/30">
-                                        {currentReview.car}
-                                    </span>
-                                    <span className="text-gray-500 text-xs">{currentReview.date}</span>
+                                    {currentReview.vehicle && (
+                                        <span className="px-3 py-1 bg-black rounded text-xs text-race-red font-mono border border-race-red/30">
+                                            {currentReview.vehicle}
+                                        </span>
+                                    )}
+                                    <span className="text-gray-500 text-xs">{currentReview.timeAgo}</span>
                                 </div>
                             </div>
                         </div>
@@ -182,7 +177,7 @@ const Testimonials: React.FC = () => {
         
         {/* Indicators */}
         <div className="flex gap-3 mt-8">
-            {reviews.map((_, i) => (
+            {reviewData.map((_, i) => (
                 <button
                     key={i}
                     onClick={() => {
