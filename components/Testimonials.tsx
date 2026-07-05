@@ -110,7 +110,7 @@ const Testimonials: React.FC = () => {
         </div>
 
         {/* Carousel Section */}
-        <div className="relative w-full max-w-4xl h-[400px] flex items-center justify-center perspective-[1000px]">
+        <div className="relative w-full max-w-4xl h-[560px] md:h-[450px] flex items-center justify-center perspective-[1000px]">
             
             {/* Navigation Buttons */}
             <button 
@@ -154,7 +154,7 @@ const Testimonials: React.FC = () => {
                                 ))}
                             </div>
                             
-                            <p className="text-xl md:text-3xl font-display font-medium text-white mb-8 leading-tight italic">
+                            <p className="text-lg md:text-xl font-display font-medium text-white mb-8 leading-tight italic">
                                 "{currentReview.quote}"
                             </p>
                             
