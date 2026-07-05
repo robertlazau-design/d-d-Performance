@@ -8,7 +8,7 @@ const services: Service[] = [
     title: 'Performance Upgrades',
     description: 'Turbochargers, superchargers, intakes, and exhaust systems installed by experts.',
     icon: <Zap className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1486262715619-01b8c2484675?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1569176330438-fa1ed1042542?q=80&w=2070&auto=format&fit=crop'
   },
   {
     id: '2',
@@ -29,7 +29,7 @@ const services: Service[] = [
     title: 'Suspension & Handling',
     description: 'Coilovers, lowering springs, and alignment for track-ready handling.',
     icon: <Car className="w-8 h-8" />,
-    image: 'https://images.unsplash.com/photo-1550545994-0f3050085a86?q=80&w=2070&auto=format&fit=crop'
+    image: 'https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=2070&auto=format&fit=crop'
   }
 ];
 
