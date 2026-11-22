@@ -1,4 +1,4 @@
-// D&D homepage draft: questions drawer + draft-only form.
+// D&D homepage draft v3: questions drawer, draft-only form, header, reveals and the rating gauge.
 // Numbers match the "D&D Performance: questions before the rebuild" doc.
 const Q = [
   ['The shop', 'focus', 1, 'Should the site lead with import repair (Subaru, Honda, Acura, Toyota), like this draft? How much of your performance work should it show?'],
@@ -120,3 +120,23 @@ document.getElementById('roform').addEventListener('submit', e => {
   n.scrollIntoView({ block: 'nearest' });
 });
 update();
+
+// Header turns solid once the page scrolls.
+const head = document.getElementById('head');
+const onScroll = () => head.classList.toggle('scrolled', scrollY > 40);
+addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+// Reveal on scroll. Content is visible without JS; this only adds motion.
+const revs = document.querySelectorAll('.rev');
+const gauge = document.getElementById('gauge');
+if (reduce || !('IntersectionObserver' in window)) {
+  revs.forEach(el => el.classList.add('in')); gauge.classList.add('go');
+} else {
+  const io = new IntersectionObserver(entries => entries.forEach(en => {
+    if (!en.isIntersecting) return;
+    en.target.classList.add('in');
+    if (en.target === gauge) setTimeout(() => gauge.classList.add('go'), 250);
+    io.unobserve(en.target);
+  }), { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+  revs.forEach(el => io.observe(el));
+}
