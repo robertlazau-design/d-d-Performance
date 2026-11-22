@@ -127,16 +127,19 @@ const onScroll = () => head.classList.toggle('scrolled', scrollY > 40);
 addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
 // Reveal on scroll. Content is visible without JS; this only adds motion.
-const revs = document.querySelectorAll('.rev');
+// A plain scroll check (not IntersectionObserver) so nothing stays hidden after a fast jump.
+const revs = [...document.querySelectorAll('.rev')];
 const gauge = document.getElementById('gauge');
-if (reduce || !('IntersectionObserver' in window)) {
-  revs.forEach(el => el.classList.add('in')); gauge.classList.add('go');
-} else {
-  const io = new IntersectionObserver(entries => entries.forEach(en => {
-    if (!en.isIntersecting) return;
-    en.target.classList.add('in');
-    if (en.target === gauge) setTimeout(() => gauge.classList.add('go'), 250);
-    io.unobserve(en.target);
-  }), { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
-  revs.forEach(el => io.observe(el));
+let ticking = false;
+const reveal = () => {
+  ticking = false;
+  const line = innerHeight * 0.92;
+  revs.forEach(el => { if (!el.classList.contains('in') && el.getBoundingClientRect().top < line) el.classList.add('in'); });
+  if (gauge.classList.contains('in') && !gauge.classList.contains('go')) setTimeout(() => gauge.classList.add('go'), 250);
+};
+if (reduce) { revs.forEach(el => el.classList.add('in')); gauge.classList.add('go'); }
+else {
+  const queue = () => { if (!ticking) { ticking = true; requestAnimationFrame(reveal); } };
+  addEventListener('scroll', queue, { passive: true }); addEventListener('resize', queue); reveal();
+  setTimeout(reveal, 400);
 }
